@@ -180,10 +180,10 @@
     }
 
     .hero-sub {
-      font-size: 15.5px;
+      font-size: 17px;
       font-weight: 300;
-      color: rgba(255,255,255,0.40);
-      max-width: 390px;
+      color: rgba(255,255,255,0.52);
+      max-width: 420px;
       line-height: 1.7;
       margin-bottom: 44px;
     }
@@ -1002,6 +1002,94 @@
     .stagger.in > *:nth-child(4) { opacity:1; transform:none; transition-delay:255ms; }
     .stagger.in > *:nth-child(5) { opacity:1; transform:none; transition-delay:340ms; }
 
+    /* ── DIFFERENTIATOR ─────────────────────────── */
+    .diff {
+      padding: 100px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .diff-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .diff-headline {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(28px, 3.2vw, 42px);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.12;
+      color: rgba(255,255,255,0.92);
+      margin-bottom: 20px;
+    }
+    .diff-headline .diff-muted {
+      color: rgba(255,255,255,0.28);
+    }
+    .diff-headline .diff-accent {
+      color: rgba(170,155,255,0.90);
+    }
+    .diff-body {
+      font-size: 15.5px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.38);
+      line-height: 1.75;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .diff-body strong {
+      font-weight: 400;
+      color: rgba(255,255,255,0.60);
+    }
+    .diff-glow {
+      position: absolute;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(100,80,255,0.09) 0%, transparent 65%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    /* social proof */
+    .social-proof {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      padding: 7px 16px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+      border-radius: 100px;
+      font-size: 11.5px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.30);
+      letter-spacing: 0.01em;
+    }
+    .social-dots {
+      display: flex;
+      gap: -4px;
+    }
+    .social-dots span {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: rgba(100,80,255,0.18);
+      border: 1.5px solid rgba(100,80,255,0.30);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      color: rgba(200,190,255,0.75);
+      font-weight: 600;
+      margin-left: -6px;
+    }
+    .social-dots span:first-child { margin-left: 0; }
+
+    @media (max-width: 800px) {
+      .diff { padding: 80px 24px; }
+    }
+
     /* ── DEMO SECTION ───────────────────────────── */
     .demo {
       padding: 130px 56px 150px;
@@ -1417,7 +1505,7 @@
   <div class="hero-left stagger">
     <div class="badge">
       <span class="badge-dot"></span>
-      macOS &nbsp;·&nbsp; $9.99
+      macOS &nbsp;·&nbsp; Free Beta
     </div>
 
     <h1 class="hero-h1">
@@ -1570,6 +1658,24 @@
 
       <div style="height:12px"></div>
     </div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<!-- ── DIFFERENTIATOR ──────────────────────────────────────── -->
+<section class="diff">
+  <div class="diff-glow"></div>
+  <div class="diff-inner reveal">
+    <h2 class="diff-headline">
+      <span class="diff-muted">Other task managers disappear when you close them.</span><br>
+      <span class="diff-accent">verge</span> doesn't.
+    </h2>
+    <p class="diff-body">
+      It lives at the <strong>edge of your screen</strong> — always there, never in the way.
+      You'll never forget a task again because <strong>you'll never stop seeing them</strong>.
+      No app to open. No window to find. Just glance right.
+    </p>
   </div>
 </section>
 
@@ -1784,14 +1890,26 @@
       </svg>
       Join the Beta
     </button>
-    <p class="cta-domain">ontheverge.app &nbsp;·&nbsp; No subscription. Ever.</p>
+    <p class="cta-domain" style="margin-bottom:16px">ontheverge.app &nbsp;·&nbsp; No subscription. Ever.</p>
+    <div class="social-proof" style="position:relative;z-index:2;">
+      <div class="social-dots">
+        <span>A</span><span>K</span><span>M</span><span>+</span>
+      </div>
+      Join 200+ beta testers
+    </div>
   </div>
 </section>
 
 <!-- ── FOOTER ────────────────────────────────────────────────── -->
 <footer>
   <div class="f-mark">verge</div>
-  <div class="f-domain">ontheverge.app</div>
+  <div style="display:flex;align-items:center;gap:18px;">
+    <span class="f-domain">ontheverge.app</span>
+    <span style="font-size:10px;color:rgba(255,255,255,0.10);">|</span>
+    <span class="f-domain">macOS 14+</span>
+    <span style="font-size:10px;color:rgba(255,255,255,0.10);">|</span>
+    <span class="f-domain">No subscription. Ever.</span>
+  </div>
 </footer>
 
 <script>
