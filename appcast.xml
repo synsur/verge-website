@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+    <channel>
+        <title>verge</title>
+        <link>https://ontheverge.app/appcast.xml</link>
+        <description>verge changelog</description>
+        <language>en</language>
+
+        <item>
+            <title>verge 1.0</title>
+            <pubDate>Sat, 05 Apr 2026 00:00:00 +0000</pubDate>
+            <sparkle:version>1</sparkle:version>
+            <sparkle:shortVersionString>1.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure
+                url="https://github.com/synsur/verge-releases/releases/download/v1.0/verge-1.0.dmg"
+                sparkle:edSignature="1YjYahfmmdu9S1tcstXunGO8xFTG9KiFol+nvlyK31HVfLOyqrdlntdFmOcb9Dnez3QUGgWnzSmUQY6g/wkXCQ=="
+                length="3752240"
+                type="application/octet-stream"
+            />
+        </item>
+
+    </channel>
+</rss>
