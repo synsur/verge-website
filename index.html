@@ -22,9 +22,10 @@
   <meta name="twitter:image" content="https://ontheverge.app/og.png" />
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23080808'/%3E%3Ctext x='16' y='22.5' font-family='system-ui,sans-serif' font-size='18' font-weight='700' fill='%23a09bff' text-anchor='middle'%3Ev%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" type="image/png" sizes="32x32" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23080808'/%3E%3Ctext x='16' y='22.5' font-family='system-ui,sans-serif' font-size='18' font-weight='700' fill='%23a09bff' text-anchor='middle'%3Ev%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap&font-display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -780,7 +781,7 @@
       position: relative; z-index: 2;
     }
 
-    /* ── BETA MODAL ─────────────────────────────── */
+    /* ── MODAL ──────────────────────────────────── */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -1069,7 +1070,7 @@
     }
     .social-dots {
       display: flex;
-      gap: -4px;
+      gap: 0;
     }
     .social-dots span {
       width: 18px; height: 18px;
@@ -1311,6 +1312,10 @@
       opacity: 1;
       transform: none;
     }
+    .demo-result-wrap.retreat {
+      opacity: 0.15;
+      transition: opacity 0.55s ease-out;
+    }
 
     /* panel shell */
     .demo-panel {
@@ -1494,7 +1499,7 @@
 <!-- ── NAV ──────────────────────────────────────────────────── -->
 <nav>
   <div class="nav-logo">verge</div>
-  <button onclick="openModal()" class="nav-link" style="background:none;border:none;cursor:pointer;font-family:inherit;">Join Beta</button>
+  <button onclick="openModal()" class="nav-link" style="background:none;border:none;cursor:pointer;font-family:inherit;">Get verge</button>
 </nav>
 
 <!-- ── HERO ─────────────────────────────────────────────────── -->
@@ -1505,7 +1510,7 @@
   <div class="hero-left stagger">
     <div class="badge">
       <span class="badge-dot"></span>
-      macOS &nbsp;·&nbsp; Free Beta
+      macOS &nbsp;·&nbsp; $9.99
     </div>
 
     <h1 class="hero-h1">
@@ -1523,9 +1528,9 @@
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
           <path d="M7 1v5M4.5 3.5L7 6l2.5-2.5M2 11.5h10M2 9.5v2h10v-2" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        Join the Beta
+        Get verge — $9.99
       </button>
-      <span class="hero-note">Free during beta &nbsp;·&nbsp; $14.99 at launch &nbsp;·&nbsp; macOS 14+</span>
+      <span class="hero-note">One-time purchase &nbsp;·&nbsp; No subscription &nbsp;·&nbsp; macOS 14+</span>
     </div>
   </div>
 
@@ -1561,7 +1566,7 @@
       </div>
     </div>
 
-    <div class="panel">
+    <div class="panel" role="region" aria-label="verge task panel preview">
 
       <div class="p-header">
         <span class="p-title">verge</span>
@@ -1883,19 +1888,19 @@
   <div class="cta-glow"></div>
   <div class="stagger">
     <h2 class="cta-h2">On the <em class="cta-verge">verge</em> of<br>getting organized.</h2>
-    <p class="cta-sub">Free while in beta. Launches at $14.99 — get it now.</p>
+    <p class="cta-sub">$9.99 once. No subscription. Ever.</p>
     <button onclick="openModal()" class="btn">
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
         <path d="M7 1v5M4.5 3.5L7 6l2.5-2.5M2 11.5h10M2 9.5v2h10v-2" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      Join the Beta
+      Get verge — $9.99
     </button>
     <p class="cta-domain" style="margin-bottom:16px">ontheverge.app &nbsp;·&nbsp; No subscription. Ever.</p>
     <div class="social-proof" style="position:relative;z-index:2;">
       <div class="social-dots">
         <span>A</span><span>K</span><span>M</span><span>+</span>
       </div>
-      Join 200+ beta testers
+      Join 200+ users
     </div>
   </div>
 </section>
@@ -1970,7 +1975,10 @@
       qaWrap.classList.remove('visible');
       shortcut.classList.remove('visible');
       shortcut.querySelectorAll('.kbd').forEach(k => k.classList.remove('active', 'pressing', 'fired'));
-      result.classList.remove('visible');
+      result.style.transition = 'none';
+      result.classList.remove('visible', 'retreat');
+      void result.offsetWidth;
+      result.style.transition = '';
       if (newTaskRow) newTaskRow.style.animation = 'none';
     }
 
@@ -2043,11 +2051,11 @@
           result.classList.add('visible');
           await wait(3400, g);
 
-          // 7. Fade out result
-          result.classList.remove('visible');
-          await wait(500, g);
+          // 7. Panel retreats to the right edge (ghost mode) — stays visible
+          result.classList.add('retreat');
+          await wait(2000, g);
         }
-      } catch(_) { /* cancelled */ }
+      } catch(e) { if (gen === g) console.error('Demo animation error:', e); }
     }
 
     // Start/stop on visibility
@@ -2169,7 +2177,7 @@
   }
 </script>
 
-<!-- ── BETA MODAL ─────────────────────────────────────────────── -->
+<!-- ── MODAL ──────────────────────────────────────────────────── -->
 <div class="modal-overlay" id="betaModal" role="dialog" aria-modal="true" aria-labelledby="modalHeadline">
   <div class="modal-card" id="betaCard">
     <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
@@ -2177,8 +2185,8 @@
     <p class="modal-wordmark">verge</p>
 
     <div id="modalForm">
-      <h2 class="modal-headline" id="modalHeadline">Join the beta.</h2>
-      <p class="modal-sub">Be first in line. Free while in beta —<br>$14.99 at launch.</p>
+      <h2 class="modal-headline" id="modalHeadline">Get verge.</h2>
+      <p class="modal-sub">$9.99 — one-time purchase.<br>No subscription. Ever.</p>
       <form id="betaForm" novalidate>
         <input
           type="email"
@@ -2189,10 +2197,10 @@
           spellcheck="false"
         />
         <button type="submit" class="modal-submit" id="betaSubmit">
-          Get early access
+          Get verge
         </button>
       </form>
-      <p class="modal-disclaimer">No spam. One email when the beta opens.</p>
+      <p class="modal-disclaimer">No spam. Just a download link.</p>
     </div>
 
     <div class="modal-success" id="modalSuccess">
@@ -2201,13 +2209,13 @@
         <path d="M15 26l8 8 14-15"/>
       </svg>
       <p class="modal-success-headline">You're on the list.</p>
-      <p class="modal-success-sub">We'll reach out as soon as<br>the beta opens.</p>
+      <p class="modal-success-sub">Check your inbox for<br>the download link.</p>
     </div>
   </div>
 </div>
 
 <script>
-  // ── Beta modal
+  // ── Modal
   (function () {
     const overlay   = document.getElementById('betaModal');
     const emailEl   = document.getElementById('betaEmail');
@@ -2245,15 +2253,13 @@
       submitBtn.disabled = true;
       submitBtn.textContent = 'Joining…';
 
-      // ── TO ACTIVATE: replace YOUR_FORM_ID with your Formspree form ID
-      // Create a free form at formspree.io → copy the ID → paste below
       try {
         await fetch('https://formspree.io/f/mjgppyzk', {
           method:  'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body:    JSON.stringify({ email }),
         });
-      } catch (_) { /* show success regardless — fix endpoint when ready */ }
+      } catch (err) { console.warn('Form submission failed:', err); }
 
       // Transition to success
       formWrap.style.transition = 'opacity 0.22s ease, transform 0.22s ease';
@@ -2276,7 +2282,7 @@
           emailEl.value          = '';
           emailEl.style.borderColor = '';
           submitBtn.disabled     = false;
-          submitBtn.textContent  = 'Get early access';
+          submitBtn.textContent  = 'Get verge';
         }, 300);
       }
     });
