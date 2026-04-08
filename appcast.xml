@@ -14,8 +14,8 @@
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
             <enclosure
                 url="https://github.com/synsur/verge-releases/releases/download/v1.0/verge-1.0.dmg"
-                sparkle:edSignature="1YjYahfmmdu9S1tcstXunGO8xFTG9KiFol+nvlyK31HVfLOyqrdlntdFmOcb9Dnez3QUGgWnzSmUQY6g/wkXCQ=="
-                length="3752240"
+                sparkle:edSignature="nhfPilr+cjkScIMPldbdDR+swdb3NBGwB+XpZHTYWMecfwFD6J59lHDqwM8TZWuawsoeuqLIOcnABb9dwe/FDQ=="
+                length="3752889"
                 type="application/octet-stream"
             />
         </item>
