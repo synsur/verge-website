@@ -224,6 +224,86 @@
       letter-spacing: 0.015em;
     }
 
+    /* ── LIFETIME TRUST ROW ─────────────────────── */
+    .lifetime-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-top: 20px;
+    }
+    .lifetime-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 11px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      font-size: 11px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+    .lifetime-badge .badge-accent {
+      color: rgba(185,175,255,0.9);
+      font-weight: 600;
+    }
+    .lifetime-badge .badge-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: rgba(150,135,255,0.5);
+      flex-shrink: 0;
+    }
+    .lifetime-divider {
+      width: 1px; height: 14px;
+      background: rgba(255,255,255,0.08);
+    }
+    .lifetime-sub {
+      font-size: 10.5px;
+      color: rgba(255,255,255,0.22);
+      letter-spacing: 0.01em;
+    }
+
+    /* ── TRUST GRID (CTA) ───────────────────────── */
+    .trust-grid {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 36px;
+      position: relative; z-index: 2;
+    }
+    .trust-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      padding: 16px 28px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .trust-item:not(:last-child) {
+      border-right: 1px solid rgba(255,255,255,0.05);
+    }
+    .trust-item-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.82);
+      letter-spacing: -0.01em;
+    }
+    .trust-item-sub {
+      font-size: 10.5px;
+      color: rgba(255,255,255,0.28);
+      letter-spacing: 0.01em;
+    }
+    .trust-price {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(185,175,255,0.9);
+      letter-spacing: -0.01em;
+    }
+
     /* ── PANEL MOCKUP ───────────────────────────── */
     .hero-right {
       position: relative;
@@ -1487,6 +1567,9 @@
       .feat-cell      { padding: 40px 32px; }
 
       .cta            { padding: 80px 24px; min-height: auto; }
+      .trust-grid     { flex-direction: column; gap: 0; width: 100%; max-width: 260px; }
+      .trust-item     { padding: 14px 0; border-right: none !important; border-top: 1px solid rgba(255,255,255,0.07); width: 100%; }
+      .lifetime-row   { flex-direction: column; align-items: flex-start; gap: 10px; }
 
       footer          { padding: 24px; flex-direction: column; gap: 6px; text-align: center; }
 
@@ -1544,7 +1627,15 @@
         </svg>
         Download for macOS
       </a>
-      <span class="hero-note">One-time purchase &nbsp;·&nbsp; No subscription &nbsp;·&nbsp; macOS 14+</span>
+      <div class="lifetime-row">
+        <div class="lifetime-badge">
+          <span class="badge-dot"></span>
+          <span class="badge-accent">$9.99</span>
+          <span>lifetime license</span>
+        </div>
+        <div class="lifetime-divider"></div>
+        <span class="lifetime-sub">No subscription. No renewal. Ever.</span>
+      </div>
     </div>
   </div>
 
@@ -1916,7 +2007,21 @@
   <div class="cta-glow"></div>
   <div class="stagger">
     <h2 class="cta-h2">On the <em class="cta-verge">verge</em> of<br>getting organized.</h2>
-    <p class="cta-sub">$9.99 once. No subscription. Ever.</p>
+    <p class="cta-sub">One payment. Yours forever.</p>
+    <div class="trust-grid">
+      <div class="trust-item">
+        <span class="trust-price">$9.99</span>
+        <span class="trust-item-sub">one-time</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-item-label">Lifetime</span>
+        <span class="trust-item-sub">no renewal</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-item-label">All updates</span>
+        <span class="trust-item-sub">included free</span>
+      </div>
+    </div>
     <a href="https://github.com/synsur/verge-releases/releases/download/v1.1/verge-1.1.dmg" class="btn" onclick="gtag('event','download_click',{'button':'cta'});">
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
         <path d="M7 1v5M4.5 3.5L7 6l2.5-2.5M2 11.5h10M2 9.5v2h10v-2" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
