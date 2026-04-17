@@ -178,27 +178,49 @@ img,video,svg{ display:block; max-width:100%; }
   padding:14px var(--gutter);
   gap:36px;
 }
+/* =========== LOGO · wordmark + breathing edge cursor =========== */
 .logo{
   font-family:var(--sans);
   font-size:19px;
   font-weight:600;
-  letter-spacing:-0.02em;
+  letter-spacing:-0.035em;
   color:var(--fg);
-  display:inline-flex; align-items:center; gap:8px;
+  display:inline-flex;
+  align-items:baseline;
+  gap:3px;
+  line-height:1;
+  cursor:pointer;
 }
-.logo .mark{
-  width:20px; height:20px;
-  background: linear-gradient(135deg, var(--purple), var(--purple-deep));
-  border-radius:5px;
-  position:relative;
-  box-shadow: 0 0 14px var(--purple-glow), inset 0 1px 0 rgba(255,255,255,0.2);
+.logo .word{
+  color:var(--fg);
+  transition: color 0.25s ease;
 }
-.logo .mark::after{
-  content:""; position:absolute;
-  right:3px; top:3px; bottom:3px;
-  width:2px;
-  background:rgba(255,255,255,0.45);
-  border-radius:1px;
+.logo .bar{
+  display:inline-block;
+  width:0.09em;
+  height:0.62em;
+  background:var(--purple);
+  margin-left:0.04em;
+  transform:translateY(0.02em);
+  box-shadow: 0 0 0.32em var(--purple-glow);
+  border-radius:0.01em;
+  animation: logo-bar-breathe 3.2s ease-in-out infinite;
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+@keyframes logo-bar-breathe {
+  0%, 100% { opacity: 0.78; }
+  50%      { opacity: 1; }
+}
+.logo:hover .bar{
+  background: var(--purple-hi);
+  box-shadow: 0 0 0.7em var(--purple-glow), 0 0 0.28em rgba(162,145,255,0.55);
+  transform: translateY(0.02em) scaleY(1.04);
+}
+.logo:hover .word{
+  color:var(--fg);
+}
+@media (prefers-reduced-motion: reduce){
+  .logo .bar{ animation: none; opacity: 1; }
 }
 .nav-center{
   justify-self:center;
@@ -1460,14 +1482,10 @@ footer .left{
 }
 footer .mid{
   justify-self:center;
-  display:inline-flex; align-items:center; gap:10px;
+  display:inline-flex; align-items:center; gap:0;
   font-size:14px;
   font-weight:500;
   color:var(--fg-dim);
-}
-footer .mid em{
-  font-style:normal;
-  color:var(--purple);
 }
 footer .right{
   text-align:right;
@@ -1728,9 +1746,9 @@ footer .right a:hover{
 <!-- ========= MASTHEAD ========= -->
 <header class="masthead">
   <div class="masthead-inner">
-    <a href="#" class="logo">
-      <span class="mark"></span>
-      verge
+    <a href="#" class="logo" aria-label="verge home">
+      <span class="word">verge</span>
+      <span class="bar" aria-hidden="true"></span>
     </a>
     <nav class="nav-center">
       <a href="#how">How it works</a>
@@ -2281,7 +2299,13 @@ footer .right a:hover{
 <!-- ========= FOOTER ========= -->
 <footer>
   <span class="left"><span class="live-dot"></span> built quietly · milton, ontario</span>
-  <span class="mid"><em>verge</em> · stay on the verge.</span>
+  <span class="mid">
+    <span class="logo" style="font-size:15px;">
+      <span class="word">verge</span>
+      <span class="bar" aria-hidden="true"></span>
+    </span>
+    <span style="margin-left:10px;color:var(--fg-dim);">· stay on the verge.</span>
+  </span>
   <span class="right">© 2026 · <a href="mailto:hello@ontheverge.app">hello@ontheverge.app</a></span>
 </footer>
 
