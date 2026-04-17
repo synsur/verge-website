@@ -204,12 +204,20 @@ img,video,svg{ display:block; max-width:100%; }
   transform:translateY(0.02em);
   box-shadow: 0 0 0.32em var(--purple-glow);
   border-radius:0.01em;
-  animation: logo-bar-breathe 3.2s ease-in-out infinite;
+  animation: logo-bar-breathe 2.2s ease-in-out infinite;
   transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 @keyframes logo-bar-breathe {
-  0%, 100% { opacity: 0.78; }
-  50%      { opacity: 1; }
+  0%, 100% {
+    opacity: 0.45;
+    box-shadow: 0 0 0.2em rgba(135,112,255,0.2);
+    transform: translateY(0.02em) scaleY(0.92);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 0.7em rgba(135,112,255,0.9), 0 0 1.2em rgba(135,112,255,0.4);
+    transform: translateY(0.02em) scaleY(1.08);
+  }
 }
 .logo:hover .bar{
   background: var(--purple-hi);
