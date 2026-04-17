@@ -206,21 +206,23 @@ img,video,svg{ display:block; max-width:100%; }
     0 0 0.55em var(--purple-glow),
     0 0 0.18em rgba(135,112,255,0.45);
   border-radius:0.015em;
-  animation: logo-bar-breathe 2.8s ease-in-out infinite;
+  animation: logo-bar-breathe 2.2s ease-in-out infinite;
   transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 @keyframes logo-bar-breathe {
   0%, 100% {
-    opacity: 0.62;
+    opacity: 0.45;
     box-shadow:
-      0 0 0.40em var(--purple-glow),
-      0 0 0.14em rgba(135,112,255,0.32);
+      0 0 0.2em rgba(135,112,255,0.2),
+      0 0 0.08em rgba(135,112,255,0.15);
+    transform: translateY(0.02em) scaleY(0.92);
   }
   50% {
     opacity: 1;
     box-shadow:
-      0 0 0.72em var(--purple-glow),
-      0 0 0.22em rgba(135,112,255,0.55);
+      0 0 0.7em rgba(135,112,255,0.9),
+      0 0 1.2em rgba(135,112,255,0.4);
+    transform: translateY(0.02em) scaleY(1.08);
   }
 }
 .logo:hover .bar{
