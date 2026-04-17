@@ -197,32 +197,41 @@ img,video,svg{ display:block; max-width:100%; }
 }
 .logo .bar{
   display:inline-block;
-  width:0.09em;
-  height:0.62em;
+  width:0.12em;
+  height:0.78em;
   background:var(--purple);
-  margin-left:0.04em;
+  margin-left:0.06em;
   transform:translateY(0.02em);
-  box-shadow: 0 0 0.32em var(--purple-glow);
-  border-radius:0.01em;
-  animation: logo-bar-breathe 2.2s ease-in-out infinite;
+  box-shadow:
+    0 0 0.55em var(--purple-glow),
+    0 0 0.18em rgba(135,112,255,0.45);
+  border-radius:0.015em;
+  animation: logo-bar-breathe 2.8s ease-in-out infinite;
   transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 @keyframes logo-bar-breathe {
   0%, 100% {
-    opacity: 0.45;
-    box-shadow: 0 0 0.2em rgba(135,112,255,0.2);
-    transform: translateY(0.02em) scaleY(0.92);
+    opacity: 0.62;
+    box-shadow:
+      0 0 0.40em var(--purple-glow),
+      0 0 0.14em rgba(135,112,255,0.32);
   }
   50% {
     opacity: 1;
-    box-shadow: 0 0 0.7em rgba(135,112,255,0.9), 0 0 1.2em rgba(135,112,255,0.4);
-    transform: translateY(0.02em) scaleY(1.08);
+    box-shadow:
+      0 0 0.72em var(--purple-glow),
+      0 0 0.22em rgba(135,112,255,0.55);
   }
 }
 .logo:hover .bar{
   background: var(--purple-hi);
-  box-shadow: 0 0 0.7em var(--purple-glow), 0 0 0.28em rgba(162,145,255,0.55);
-  transform: translateY(0.02em) scaleY(1.04);
+  box-shadow:
+    0 0 1em var(--purple-glow),
+    0 0 0.4em rgba(162,145,255,0.65),
+    0 0 0.15em rgba(244,243,250,0.3);
+  transform: translateY(0.02em) scaleY(1.08);
+  animation-play-state: paused;
+  opacity: 1;
 }
 .logo:hover .word{
   color:var(--fg);
@@ -1552,14 +1561,28 @@ footer .right a:hover{
   .mast-cta{ font-size:12px; padding:6px 12px; }
   .logo{ font-size:17px; }
 
-  .hero{ padding:32px var(--gutter) 60px; }
-  .hero-kicker{ margin-bottom:32px; flex-wrap:wrap; gap:10px; }
+  .hero{ padding:28px var(--gutter) 56px; }
+  .hero-kicker{ margin-bottom:24px; flex-wrap:wrap; gap:10px; }
   .hero-kicker .label{ font-size:12.5px; }
+
+  /* FLIP HERO ORDER — panel appears first on mobile, compact */
+  .hero-grid{ gap:28px; }
+  .hero-panel-col{ order:-1; padding-top:0; min-height:auto; }
+  .proximity-stage{ padding:16px 0 20px; transform:scale(0.82); transform-origin:center top; }
+  .proximity-stage::before{ width:280px; height:280px; }
+  .proximity-ring{ width:260px; height:260px; }
+  .annot{ font-size:9.5px; padding:5px 8px; }
+  .annot-opacity{ top:12px; right:-4px; }
+  .annot-width{ bottom:36px; left:-4px; }
+  .annot-proximity{ display:none; }
+  .cursor-hint{ display:none; }
+
+  /* SMALLER MOBILE HEADLINE */
   .hero-headline{
-    font-size:clamp(42px, 11.5vw, 72px);
-    margin-bottom:22px;
+    font-size:clamp(40px, 9.5vw, 56px);
+    margin-bottom:20px;
   }
-  .hero-lede{ font-size:17px; margin-bottom:28px; }
+  .hero-lede{ font-size:17px; margin-bottom:26px; }
   .hero-cta-row{ gap:14px; flex-direction:column; align-items:stretch; width:100%; }
   .hero-cta-row .btn{ width:100%; justify-content:space-between; padding:14px 18px; }
   .hero-cta-row .btn--ghost{ display:none; }
@@ -1570,27 +1593,23 @@ footer .right a:hover{
   .hero-trust .sep{ display:none; }
   .cta-desktop{ display:none !important; }
   .cta-mobile{ display:inline-flex; }
+
+  /* UNIFIED MOBILE TRUST BLOCK — both lines treated equally */
   .mobile-trust{
     display:flex; flex-direction:column;
-    gap:4px; margin-top:4px;
+    gap:5px; margin-top:16px;
     font-family:var(--mono);
-    font-size:10.5px; letter-spacing:0.02em;
+    font-size:10.5px; letter-spacing:0.04em;
     color:var(--fg-mute);
-    line-height:1.7;
+    line-height:1.5;
   }
-  .mobile-trust b{ color:var(--fg); font-weight:500; display:block; }
 
-  .proximity-stage{ padding:24px 0 40px; }
-  .proximity-stage::before{ width:300px; height:300px; }
-  .proximity-ring{ width:280px; height:280px; }
-  .annot{ font-size:9.5px; padding:5px 8px; }
-  .annot-opacity{ top:20px; right:0; }
-  .annot-width{ bottom:50px; left:0; }
-  .annot-proximity{ display:none; }
-  .cursor-hint{ display:none; }
+  /* DESATURATE polarix red icon — harsh against full-opacity mobile panel */
+  .p-row-expand svg{ filter: saturate(0.5) brightness(0.85); }
 
   .differentiator{ padding:80px var(--gutter); }
   .diff-head{ margin-bottom:32px; }
+  .diff-head::after{ display:none; }
   .diff-quote{ font-size:clamp(30px, 8vw, 44px); }
 
   .figure{ padding:0 var(--gutter) 80px; }
@@ -1604,7 +1623,9 @@ footer .right a:hover{
   .fig-head .mono-tiny.right{ text-align:left; }
   .video-shell .chrome .title{ display:none; }
 
-  .demo::before, .demo::after{ font-size:9.5px; top:24px; }
+  /* QUICK ADD MOBILE FIX — hide corner marginalia, tighten padding */
+  .demo::before, .demo::after{ display:none; }
+  section.demo{ padding:72px 22px 96px !important; }
 
   .how{ padding:70px var(--gutter); }
   .how-top{
@@ -1631,19 +1652,27 @@ footer .right a:hover{
   .features-grid{ gap:12px; }
   .feat{ padding:28px 24px; min-height:auto; }
   .feat h4{ font-size:21px; }
+  /* STACK detail row vertically — no more floating right-edge viz */
+  .feat-detail{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:12px;
+  }
 
+  /* DOWNLOAD SECTION — tighter mobile rhythm */
   .subscribe{ padding:70px var(--gutter); }
-  .sub-card{ padding:44px 26px; }
-  .sub-left h2{ font-size:clamp(30px, 8vw, 42px); }
-  .sub-right{ padding:28px 24px; }
+  .sub-card{ padding:32px 24px 36px; gap:24px; }
+  .sub-left h2{ font-size:clamp(30px, 8vw, 42px); margin-bottom:16px; }
+  .sub-left p{ margin-bottom:20px; }
+  .sub-right{ padding:24px 20px; }
   .sub-right .amount{ font-size:46px; }
-  .sub-spec-row{ flex-wrap:wrap; gap:18px 24px; }
+  .sub-spec-row{ flex-wrap:wrap; gap:16px 22px; padding-top:20px; }
 
   footer{
     grid-template-columns:1fr;
     text-align:center;
     gap:12px;
-    padding:26px var(--gutter);
+    padding:32px var(--gutter) 48px;
   }
   footer .left, footer .right{ text-align:center; justify-content:center; }
   footer .mid{ justify-self:center; }
@@ -1818,7 +1847,7 @@ footer .right a:hover{
       </div>
 
       <div class="mobile-trust cta-mobile">
-        <b>License emailed instantly · Download on your Mac</b>
+        <span>License emailed instantly · Download on your Mac</span>
         <span>30-day money-back guarantee</span>
       </div>
     </div>
