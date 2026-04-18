@@ -606,16 +606,6 @@ img,video,svg{ display:block; max-width:100%; }
   position:relative; z-index:2;
   border-top:1px solid var(--rule);
 }
-.diff-head{
-  display:flex; align-items:center; gap:14px;
-  margin-bottom:60px;
-}
-.diff-head::after{
-  content:"";
-  flex:1;
-  height:1px;
-  background: linear-gradient(90deg, var(--rule-med), transparent);
-}
 .diff-grid{
   display:grid;
   grid-template-columns: 1fr 1fr;
@@ -1132,10 +1122,6 @@ img,video,svg{ display:block; max-width:100%; }
   max-width:1100px; margin:0 auto;
   position:relative; z-index:2;
 }
-.statement .sec-num{
-  display:inline-block;
-  margin-bottom:40px;
-}
 .statement h2{
   font-size:clamp(48px, 7.5vw, 128px);
   line-height:0.96;
@@ -1610,8 +1596,6 @@ footer .right a:hover{
   .p-row-expand svg{ filter: saturate(0.5) brightness(0.85); }
 
   .differentiator{ padding:80px var(--gutter); }
-  .diff-head{ margin-bottom:32px; }
-  .diff-head::after{ display:none; }
   .diff-quote{ font-size:clamp(30px, 8vw, 44px); }
 
   .figure{ padding:0 var(--gutter) 80px; }
@@ -1642,7 +1626,6 @@ footer .right a:hover{
 
   .statement{ padding:90px var(--gutter); }
   .statement h2{ font-size:clamp(38px, 11vw, 68px); }
-  .statement .sec-num{ margin-bottom:26px; }
 
   .features{ padding:70px var(--gutter); }
   .features-head{
@@ -1807,7 +1790,6 @@ footer .right a:hover{
 <!-- ========= 1 · HERO ========= -->
 <section class="hero">
   <div class="hero-kicker">
-    <span class="sec-num">01 / hero</span>
     <span class="label">An ambient task manager for macOS · built for focused work</span>
   </div>
 
@@ -1954,9 +1936,6 @@ footer .right a:hover{
 
 <!-- ========= 2 · DIFFERENTIATOR ========= -->
 <section class="differentiator">
-  <div class="diff-head">
-    <span class="sec-num">02 / the problem</span>
-  </div>
   <div class="diff-grid">
     <p class="diff-quote">
       Other task managers <em>disappear</em> when you close them. verge <span class="doesnt">doesn't.</span>
@@ -1972,7 +1951,6 @@ footer .right a:hover{
 <!-- ========= 3 · VIDEO ========= -->
 <section class="figure">
   <div class="fig-head">
-    <span class="sec-num">03 / in motion</span>
     <h3>A day with verge, compressed.</h3>
     <span class="mono-tiny right"><span class="purple">●</span> observed · no cuts</span>
   </div>
@@ -2057,9 +2035,6 @@ footer .right a:hover{
 <section class="how" id="how">
   <div class="how-top">
     <div>
-      <div class="meta-line">
-        <span class="sec-num">05 / behavior</span>
-      </div>
       <h2>Three states.<br>One <em>instinct</em>.</h2>
     </div>
     <p class="side">verge borrows a pattern from how the eye actually works — peripheral vision notices, focal vision commits. The panel moves between ghosted awareness and full clarity the moment your cursor drifts toward it. No click. No shortcut. Just presence.</p>
@@ -2178,7 +2153,6 @@ footer .right a:hover{
 <!-- ========= 6 · BIG STATEMENT ========= -->
 <section class="statement">
   <div class="statement-inner">
-    <span class="sec-num">06 / thesis</span>
     <h2>Your tasks live at the <em>edge</em> of everything.</h2>
     <p class="tail">The right side of the screen is the quietest real estate you own.</p>
   </div>
@@ -2188,9 +2162,6 @@ footer .right a:hover{
 <section class="features" id="features">
   <div class="features-head">
     <div>
-      <div class="meta-line">
-        <span class="sec-num">07 / built</span>
-      </div>
       <h2>Built for a <em>workday</em>. Not an app store.</h2>
     </div>
     <p class="side">Four pillars. No bloat. Every feature earns its place on the panel.</p>
@@ -2274,9 +2245,6 @@ footer .right a:hover{
 <section class="subscribe" id="download">
   <div class="sub-card">
     <div class="sub-left">
-      <div class="meta-line">
-        <span class="sec-num">08 / get it</span>
-      </div>
       <h2>Get <em>verge</em>. Once. Forever.</h2>
       <p>
         One-time payment. No subscription. No renewal. Every future update included. If it doesn't stick, <b>refund within 30 days — no questions.</b>
