@@ -7,6 +7,20 @@
         <language>en</language>
 
         <item>
+            <title>verge 1.2</title>
+            <pubDate>Thu, 23 Apr 2026 00:00:00 +0000</pubDate>
+            <sparkle:version>3</sparkle:version>
+            <sparkle:shortVersionString>1.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure
+                url="https://github.com/synsur/verge-releases/releases/download/v1.2/verge-1.2.dmg"
+                sparkle:edSignature="9CEvqb1QtgymzBUAmzgOykrPcfUdCvCu3KB6IiFaZXUOLmOFrH3aSxgrE5g/du3MkHvRyeA6+xS/dP1sAFPuCQ=="
+                length="3215384"
+                type="application/octet-stream"
+            />
+        </item>
+
+        <item>
             <title>verge 1.1</title>
             <pubDate>Tue, 08 Apr 2026 00:00:00 +0000</pubDate>
             <sparkle:version>2</sparkle:version>
