@@ -1772,6 +1772,26 @@ footer .right a:hover{
 .dp-badge-red { font-size:9px; padding:2.5px 8px; border-radius:4px; background:rgba(255,59,48,0.12); color:rgba(255,120,110,0.80); flex-shrink:0; }
 .dp-rule { height:1px; background:rgba(255,255,255,0.04); margin:5px 0; }
 @media (max-width:800px) { .shortcut-badge { display:none !important; } .demo-shortcut-hint { display:none !important; } }
+
+/* =========================================================
+   TAGLINE ANIMATION — "always there. / never in the way."
+   ========================================================= */
+@keyframes tagline-breathe{
+  0%,100%{ opacity:0.13; }
+  55%    { opacity:1;    }
+}
+.tagline-dim{
+  display:block;
+  animation: tagline-breathe 4s cubic-bezier(0.45,0,0.55,1) infinite;
+  animation-delay: 0.6s;
+}
+.statement-tagline{
+  max-width:none !important;
+  font-size:clamp(48px,7vw,112px) !important;
+  font-weight:620 !important;
+  letter-spacing:-0.048em !important;
+  line-height:0.94 !important;
+}
 </style>
 <link rel="icon" href="/favicons/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32.png">
@@ -2171,8 +2191,10 @@ footer .right a:hover{
 <!-- ========= 6 · BIG STATEMENT ========= -->
 <section class="statement">
   <div class="statement-inner">
-    <h2>Your tasks live at the <em>edge</em> of everything.</h2>
-    <p class="tail">The right side of the screen is the quietest real estate you own.</p>
+    <h2 class="statement-tagline">
+      <span style="display:block;">always there.</span>
+      <span class="tagline-dim">never in the way.</span>
+    </h2>
   </div>
 </section>
 
