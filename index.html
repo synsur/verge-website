@@ -2496,6 +2496,8 @@ if (heroPanel) {
       try {
         const btn = el.id === 'heroDownloadDesktop' ? 'hero' : 'footer_card';
         gtag('event','download_click',{'button':btn});
+        // Reddit pixel — fires on every DMG download click
+        rdt('track','Lead',{'lead_type':'download'});
       } catch(e){}
     });
   });
@@ -2504,6 +2506,16 @@ if (heroPanel) {
       try {
         const btn = el.id === 'heroPurchaseMobile' ? 'hero_mobile' : 'footer_card_mobile';
         gtag('event','purchase_click',{'button':btn});
+        rdt('track','AddToCart');
+      } catch(e){}
+    });
+  });
+  // "Skip trial, buy now" and "Already purchased? Activate" — high-intent clicks
+  document.querySelectorAll('#heroActivateExisting, #ctaBuyNow').forEach(el => {
+    el && el.addEventListener('click', () => {
+      try {
+        gtag('event','purchase_intent_click',{'button': el.id});
+        rdt('track','AddToCart');
       } catch(e){}
     });
   });
