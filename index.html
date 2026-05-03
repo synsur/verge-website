@@ -2513,10 +2513,87 @@ if (heroPanel) {
    ANALYTICS EVENTS
    ========================================================= */
 (function(){
+  const ATTR_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+
+  function currentAttribution() {
+    const params = new URLSearchParams(window.location.search);
+    const payload = {};
+    ATTR_KEYS.forEach(key => {
+      const value = params.get(key);
+      if (value) payload[key.replace('utm_', '')] = value;
+    });
+
+    if (Object.keys(payload).length) {
+      try { localStorage.setItem('verge_attribution', JSON.stringify(payload)); } catch(e) {}
+      return payload;
+    }
+
+    try {
+      return JSON.parse(localStorage.getItem('verge_attribution') || '{}');
+    } catch(e) {
+      return {};
+    }
+  }
+
+  function trackEvent(name, properties) {
+    const payload = Object.assign({
+      page_location: window.location.href,
+      page_title: document.title,
+      conversion_location: 'website'
+    }, currentAttribution(), properties || {});
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(Object.assign({ event: name }, payload));
+
+    if (typeof gtag === 'function') {
+      gtag('event', name, payload);
+    }
+    return payload;
+  }
+
+  function withStoredUtm(url, fallbackContent) {
+    try {
+      const next = new URL(url, window.location.href);
+      const attribution = currentAttribution();
+      const mapping = {
+        source: 'utm_source',
+        medium: 'utm_medium',
+        campaign: 'utm_campaign',
+        content: 'utm_content',
+        term: 'utm_term'
+      };
+
+      Object.entries(mapping).forEach(([from, to]) => {
+        if (attribution[from] && !next.searchParams.get(to)) {
+          next.searchParams.set(to, attribution[from]);
+        }
+      });
+
+      if (!next.searchParams.get('utm_content') && fallbackContent) {
+        next.searchParams.set('utm_content', fallbackContent);
+      }
+      return next.toString();
+    } catch(e) {
+      return url;
+    }
+  }
+
+  trackEvent('landing_page_view');
+
   document.querySelectorAll('#heroDownloadDesktop, #ctaDownloadDesktop').forEach(el => {
     el && el.addEventListener('click', () => {
       try {
         const btn = el.id === 'heroDownloadDesktop' ? 'hero' : 'footer_card';
+        trackEvent('download_clicked', {
+          button_location: btn,
+          surface: 'marketing_site',
+          destination_url: el.href
+        });
+        trackEvent('trial_cta_clicked', {
+          button_location: btn,
+          surface: 'marketing_site',
+          destination_url: el.href
+        });
         gtag('event','download_click',{'button':btn});
         // Reddit pixel — fires on every DMG download click
         rdt('track','Lead',{'lead_type':'download'});
@@ -2527,6 +2604,12 @@ if (heroPanel) {
     el && el.addEventListener('click', () => {
       try {
         const btn = el.id === 'heroPurchaseMobile' ? 'hero_mobile' : 'footer_card_mobile';
+        el.href = withStoredUtm(el.href, btn);
+        trackEvent('checkout_clicked', {
+          button_location: btn,
+          surface: 'marketing_site_mobile',
+          destination_url: el.href
+        });
         gtag('event','purchase_click',{'button':btn});
         rdt('track','AddToCart');
       } catch(e){}
@@ -2536,6 +2619,12 @@ if (heroPanel) {
   document.querySelectorAll('#heroActivateExisting, #ctaBuyNow').forEach(el => {
     el && el.addEventListener('click', () => {
       try {
+        el.href = withStoredUtm(el.href, el.id);
+        trackEvent(el.id === 'ctaBuyNow' ? 'checkout_clicked' : 'upgrade_clicked', {
+          button_location: el.id,
+          surface: 'marketing_site',
+          destination_url: el.href
+        });
         gtag('event','purchase_intent_click',{'button': el.id});
         rdt('track','AddToCart');
       } catch(e){}
