@@ -2514,6 +2514,7 @@ if (heroPanel) {
    ========================================================= */
 (function(){
   const ATTR_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+  let ga4DispatchDelay = 0;
 
   function currentAttribution() {
     const params = new URLSearchParams(window.location.search);
@@ -2546,7 +2547,17 @@ if (heroPanel) {
     window.dataLayer.push(Object.assign({ event: name }, payload));
 
     if (typeof gtag === 'function') {
-      gtag('event', name, payload);
+      const delay = ga4DispatchDelay;
+      ga4DispatchDelay += 300;
+      window.setTimeout(() => {
+        gtag('event', name, Object.assign({
+          send_to: 'G-2Z0NR13WJ1',
+          transport_type: 'beacon'
+        }, payload));
+      }, delay);
+      window.setTimeout(() => {
+        ga4DispatchDelay = 0;
+      }, Math.max(900, delay + 500));
     }
     return payload;
   }
